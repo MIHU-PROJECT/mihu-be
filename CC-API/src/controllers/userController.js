@@ -1,10 +1,10 @@
 const { Users } = require('../models/userModel');
 
 const getUserById = async (req, res) => {
-    const userId = req.params._id;
+    const userId = req.params.id;
 
     try {
-        const user = await Users.findById(userId, {
+        const user = await Users.findOne({ id: userId }, {
             password: 0, refreshToken: 0
         })
 
@@ -24,7 +24,7 @@ const getUserById = async (req, res) => {
 }
 
 const updateUserById = async (req, res) => {
-    const userId = req.params._id;
+    const userId = req.params.id;
     const { username, email, password, address } = req.body;
 
     try {
