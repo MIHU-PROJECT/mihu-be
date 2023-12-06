@@ -1,5 +1,17 @@
 const { Users } = require('../models/userModel');
 
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await Users.find();
+        res.send(users);
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            message: 'Users Gagal ditemukan'
+        });
+    }
+}
+
 const getUserById = async (req, res) => {
     const userId = req.params.id;
 
@@ -69,6 +81,7 @@ const updateUserById = async (req, res) => {
 const uploadPictureImageByUserId = (req, res) => {}
 
 module.exports = { 
+    getAllUsers,
     getUserById,
     updateUserById,
     uploadPictureImageByUserId

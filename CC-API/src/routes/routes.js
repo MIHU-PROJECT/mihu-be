@@ -6,10 +6,11 @@ const {
     Register, 
     Logout, 
     refreshToken, 
-    getAllUsers 
+     
 } = require('../controllers/authController')
 
 const {
+    getAllUsers,
     getUserById,
     updateUserById,
     uploadPictureImageByUserId
