@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const { Category, seedCategories } = require('../models/categoryModel');
 
 dotenv.config();
 
