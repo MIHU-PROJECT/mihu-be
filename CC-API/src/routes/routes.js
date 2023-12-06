@@ -6,7 +6,6 @@ const {
     Register, 
     Logout, 
     refreshToken, 
-     
 } = require('../controllers/authController')
 
 const {
@@ -15,6 +14,10 @@ const {
     updateUserById,
     uploadPictureImageByUserId
 } = require('../controllers/userController')
+
+const { 
+    getAllJobs
+} = require('../controllers/jobController')
 
 // Mendefinisikan Route Auth
 router.post('/register', Register);
@@ -28,7 +31,8 @@ router.get('/users/:_id', authenticateToken, getUserById)
 router.put('/users/:_id', authenticateToken, updateUserById)
 
 // Mendefinsikan Route Job
-// router.route('/jobs').get(jobController.getAllJobs)
+router.get('/jobs', getAllJobs)
+
 // router.route('/jobs/:id').get(jobController.getJobById)
 // router.route('/jobs/').post(jobController.createJob)
 // router.route('/jobs/:id').put(jobController.updateJob)
