@@ -160,7 +160,7 @@ const Logout = async (req, res) => {
     res.clearCookie('refreshToken');
     res.clearCookie('accessToken');
 
-    return res.status(200).json({
+    return res.sendStatus(200).json({
         message: 'Logout berhasil'
     });
 }

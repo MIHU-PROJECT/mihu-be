@@ -10,10 +10,10 @@ mongoose.set("strictQuery", false);
 const connectDatabase = async () => {
   try {
     await mongoose.connect(databaseUrl);
-    console.log('Koneksi MongoDB berhasil.');
+    console.log('Koneksi MongoDB berhasil.')
   } catch (error) {
     console.error('Gagal terhubung ke MongoDB:', error.message);
-    process.exit(1);
+    process.exit(1)
   }
 };
 
