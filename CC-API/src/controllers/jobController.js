@@ -18,9 +18,3 @@ module.exports = {
      updateJobById,
      deleteJobById
 }
-
-// router.route('/jobs').get(jobController.getAllJobs)
-// router.route('/jobs/:id').get(jobController.getJobById)
-// router.route('/jobs/').post(jobController.createJob)
-// router.route('/jobs/:id').put(jobController.updateJob)
-// router.route('/jobs/:id').delete(jobController.deleteJob)

@@ -158,5 +158,4 @@ module.exports = {
     Login,
     refreshToken,
     Logout,
-    getAllUsers
- }
+}
