@@ -9,12 +9,14 @@ mongoose.set("strictQuery", false);
 
 const connectDatabase = async () => {
   try {
-    await mongoose.connect(databaseUrl);
-    console.log('Koneksi MongoDB berhasil.')
+    await mongoose.connect(databaseUrl)
+    .then(() => {
+      console.log('Koneksi MongoDB berhasil.')
+      seedCategories()
+    })
   } catch (error) {
-    console.error('Gagal terhubung ke MongoDB:', error.message);
+    console.error('Gagal terhubung ke MongoDB:', error.message)
     process.exit(1)
   }
 };
-
 module.exports = connectDatabase;
