@@ -23,7 +23,8 @@ router.delete('/logout', Logout)
 
 // User Management
 router.get('/users', getAllUsers)
-router.get('/users/:_id', getUserById)
+router.get('/users/:_id', authenticateToken, getUserById)
+router.put('/users/:_id', authenticateToken, updateUserById)
 
 // Mendefinsikan Route Job
 // router.route('/jobs').get(jobController.getAllJobs)
