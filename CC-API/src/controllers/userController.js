@@ -42,7 +42,7 @@ const getUserById = async (req, res) => {
 }
 
 const updateUserById = async (req, res) => {
-    const userId = req.params.id;
+    const userId = req.params._id;
     const { username, email, password, address } = req.body;
 
     try {
