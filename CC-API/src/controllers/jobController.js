@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { Jobs } = require('../models/jobModel')
 const { Category, seedCategories } = require('../models/categoryModel')
 

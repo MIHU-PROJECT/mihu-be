@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* eslint-disable no-unused-vars */
 const bcrypt = require('bcrypt');
 const { Users } = require('../models/userModel');
 
