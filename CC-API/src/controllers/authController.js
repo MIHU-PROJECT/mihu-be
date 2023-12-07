@@ -55,7 +55,7 @@ const Login = async (req, res) => {
         )
         
         if(!passMatching){
-            return res.sendStatus(401).json({
+            return res.status(401).json({
                 message: 'Password tidak cocok'
             })
         }
@@ -89,8 +89,8 @@ const Login = async (req, res) => {
         });
     } catch(err) {
         return res.status(404).json({
-            message: "Email tidak ditemukan"
-        });
+            message: 'Email tidak ditemukan'
+        })
     }
 }
 
@@ -135,7 +135,7 @@ const refreshToken = async (req, res) => {
 const Logout = async (req, res) => {
     const refreshToken = req.cookies.refreshToken
 
-    if(!refreshToken) return res.sendStatus(204)
+    if(!refreshToken) return res.status(204)
 
     const user = await Users.findOneAndUpdate(
         { refreshToken: refreshToken },
@@ -143,12 +143,12 @@ const Logout = async (req, res) => {
         { new: true }
     );
 
-    if(!user) return res.sendStatus(204);
+    if(!user) return res.status(204);
 
     res.clearCookie('refreshToken');
     res.clearCookie('accessToken');
 
-    return res.sendStatus(200).json({
+    return res.status(200).json({
         message: 'Logout berhasil'
     });
 }

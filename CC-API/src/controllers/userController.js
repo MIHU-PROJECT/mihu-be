@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const { Users } = require('../models/userModel');
 
 const getAllUsers = async (req, res) => {
@@ -13,22 +15,26 @@ const getAllUsers = async (req, res) => {
 }
 
 const getUserById = async (req, res) => {
-    const userId = req.params.id;
-
+    const userId = req.body.userId;
+    
     try {
-        const user = await Users.findOne({ id: userId }, {
-            password: 0, refreshToken: 0
+        const user = await Users.findOne({ _id: userId }, {
+            password: 0,
+            refreshToken: 0,
         })
 
-        if(!user) return res.status(404).json({
-            message: 'User tidak ditemukan!'
-        })
+        if (!user) {
+            return res.status(404).json({
+                message: 'User tidak ditemukan!'
+            })
+        }
 
         return res.status(200).json({
             user,
             message: 'User details berhasil didapatkan',
-        });
-    } catch(error) {
+        })
+    } catch (error) {
+        console.error(error)
         return res.status(500).json({
             message: 'Gagal mendapatkan User!'
         })
