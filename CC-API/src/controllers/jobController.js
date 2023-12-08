@@ -21,8 +21,9 @@ const addJob = async (req, res) => {
         const { title, category, price, description } = req.body;
   
         const categoryObject = await Category.findOne({ name: category })
+        const findUserId = await Users.findOne({}, { _id: req.userId })
   
-        if (!categoryObject) {
+        if(!categoryObject) {
             return res.status(400).json({
                 message: 'Invalid category',
             });
@@ -33,7 +34,7 @@ const addJob = async (req, res) => {
             category: categoryObject._id,
             price,
             description,
-            createdBy: await Users.findOne({}, { _id: req.userId })
+            createdBy: findUserId
         });
   
         return res.status(201).json({
