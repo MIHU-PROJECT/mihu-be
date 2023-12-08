@@ -13,7 +13,7 @@ const authenticateToken = (req, res, next) => {
 
       if(err) return res.sendStatus(403);
 
-      req.email = decoded.email;
+      req.userId = decoded.userId;
       next();
     });
 }

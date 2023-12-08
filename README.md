@@ -1,3 +1,5 @@
-# mihu-be
+# MIHU (May I Help U?)
 
-backend of mihu app made for bangkit capstone project
+Backend Content of MIHU APP for Bangkit Capstone Project
+
+`Documentation Ongoing`

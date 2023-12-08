@@ -12,11 +12,12 @@ const {
     getAllUsers,
     getUserById,
     updateUserById,
-    uploadPictureImageByUserId
+    // uploadPictureImageByUserId
 } = require('../controllers/userController')
 
 const { 
-    getAllJobs
+    getAllJobs,
+    addJob
 } = require('../controllers/jobController')
 
 // Mendefinisikan Route Auth
@@ -32,6 +33,7 @@ router.put('/users/:_id', updateUserById)
 
 // Mendefinsikan Route Job
 router.get('/jobs', getAllJobs)
+router.post('/jobs', authenticateToken, addJob)
 
 // router.route('/jobs/:id').get(jobController.getJobById)
 // router.route('/jobs/').post(jobController.createJob)
@@ -39,6 +41,5 @@ router.get('/jobs', getAllJobs)
 // router.route('/jobs/:id').delete(jobController.deleteJob)
 
 // JobByKategori?
-// Cleaning, Electrical Help, Plumbing & Laundry, Ironing, Help Moving
 
 module.exports = router;

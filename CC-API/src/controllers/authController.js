@@ -50,9 +50,7 @@ const Login = async (req, res) => {
             });
         }
 
-        const passMatching = await bcrypt.compare(
-            req.body.password, getUserData.password
-        )
+        const passMatching = await bcrypt.compare(req.body.password, getUserData.password)
         
         if(!passMatching){
             return res.status(401).json({
@@ -66,12 +64,12 @@ const Login = async (req, res) => {
             email 
         } = getUserData;
 
-        const accessToken = jwt.sign({ _id, username, email }, process.env.ACCESS_TOKEN_SECRET, {
-            expiresIn: '15m'
+        const accessToken = jwt.sign({ userId: getUserData._id }, process.env.ACCESS_TOKEN_SECRET, {
+            expiresIn: '1d'
         });
 
-        const refreshToken = jwt.sign({_id, username, email}, process.env.REFRESH_TOKEN_SECRET, {
-            expiresIn: '45m'
+        const refreshToken = jwt.sign({ userId: getUserData._id }, process.env.REFRESH_TOKEN_SECRET, {
+            expiresIn: '1d'
         })
         
         await Users.findByIdAndUpdate(
@@ -80,8 +78,7 @@ const Login = async (req, res) => {
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000,
-            domain: 'localhost',
-            path: '/token',
+            path: '/',
         });
             
         return res.status(201).json({
