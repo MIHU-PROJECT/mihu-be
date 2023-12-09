@@ -18,7 +18,8 @@ const {
     getAllJobs,
     addJob,
     getJobById,
-    updateJobById
+    updateJobById,
+    deleteJobById
 } = require('../controllers/jobController')
 
 // Mendefinisikan Route Auth
@@ -37,8 +38,7 @@ router.post('/jobs', authenticateToken, addJob)
 router.get('/jobs', authenticateToken, getAllJobs)
 router.get('/jobs/:_id', authenticateToken, getJobById)
 router.put('/jobs/:_id', authenticateToken, updateJobById)
-
-// router.route('/jobs/:id').delete(jobController.deleteJob)
+router.delete('/jobs/:_id', authenticateToken, deleteJobById)
 
 // JobByKategori?
 

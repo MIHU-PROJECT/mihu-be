@@ -96,7 +96,27 @@ const updateJobById = async (req, res) => {
     }
 }
 
-const deleteJobById = async (req, res) => {}
+const deleteJobById = async (req, res) => {
+    try {
+        const jobId = req.params._id;
+    
+        const deletedJob = await Jobs.findByIdAndDelete(jobId);
+    
+        if (!deletedJob) {
+          return res.status(404).json({ message: 'Job not found' });
+        }
+    
+        res.status(200).json({ 
+            message: 'Job deleted successfully', 
+            Jobs: deletedJob 
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ 
+            message: 'Failed to delete job' 
+        })
+    }
+}
 
 module.exports = {
      getAllJobs,
