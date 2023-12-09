@@ -40,6 +40,6 @@ router.get('/jobs/:_id', authenticateToken, getJobById)
 router.put('/jobs/:_id', authenticateToken, updateJobById)
 router.delete('/jobs/:_id', authenticateToken, deleteJobById)
 
-// JobByKategori?
+// Search JobByKategori? && Search JobByName
 
 module.exports = router;
