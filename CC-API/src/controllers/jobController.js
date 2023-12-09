@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 const { Jobs } = require('../models/jobModel')
-const { Category, seedCategories } = require('../models/categoryModel')
+const { Category } = require('../models/categoryModel')
 const { Users } = require('../models/userModel')
 
 const getAllJobs = async (req, res) => {
@@ -53,7 +52,7 @@ const addJob = async (req, res) => {
         });
   
         return res.status(201).json({
-            message: 'Job added successfully',
+            message: "Job added successfully",
             Jobs: newJob,
         });
     } catch (error) {
@@ -64,7 +63,38 @@ const addJob = async (req, res) => {
     }
 }
 
-const updateJobById = async (req, res) => {}
+const updateJobById = async (req, res) => {
+    try {
+        const jobId = req.params._id
+        const { title, category, price, description } = req.body;
+
+        const categoryObject = await Category.findOne({ name: category })
+
+        const updatedJob = await Jobs.findByIdAndUpdate(
+            jobId,
+            { $set: { 
+                title,
+                category: categoryObject,
+                price,
+                description 
+            }},
+            { new: true }
+        )
+
+        if(!updatedJob) return res.status(404).json({
+            message: "Job not found"
+        })
+
+        return res.status(200).json({
+            message: "Job updated successfully",
+            Jobs: updatedJob
+        })
+    } catch(error) {
+        return res.status(500).json({
+            message: "Failed to update job"
+        })
+    }
+}
 
 const deleteJobById = async (req, res) => {}
 
