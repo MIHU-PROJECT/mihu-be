@@ -14,7 +14,22 @@ const getAllJobs = async (req, res) => {
     }
 }
 
-const getJobById = async (req, res) => {}
+const getJobById = async (req, res) => {
+    try {
+        const jobId = req.params._id
+        const job = await Jobs.findById(jobId)
+
+        if(!job) return res.status(404).json({
+            message: "Job not found!"
+        })
+
+        res.status(200).json({ job })
+    } catch(error){
+        res.status(500).json({ 
+            message: 'Failed fetch a Job'
+        });
+    }
+}
 
 const addJob = async (req, res) => {
     try {
