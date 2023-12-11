@@ -34,11 +34,11 @@ const userSchema = new mongoose.Schema({
         default: 'Worker',
     },
     workerInfo: {
-        type: mongoose.Scema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Worker',
     },
     RecruiterInfo: {
-        type: mongoose.Scema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Recruiter',
     },
     refreshToken: {
