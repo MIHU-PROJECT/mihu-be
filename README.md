@@ -7,8 +7,8 @@ Backend Content of MIHU APP for Bangkit Capstone Project
 **Base URL :**
 > TBA
 
-*See details documentation here : *
-> TBA
+*See Endpoint documentation here :*
+> https://github.com/fadhilaf/mihu-be/blob/main/Endpoint.md
 
 ### Feature for User/Worker
 

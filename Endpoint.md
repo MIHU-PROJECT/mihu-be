@@ -2,10 +2,6 @@
 
 > API documentation for MIHU Dev Apps
 
-### Endpoint
-
-> Doesn't yet provide public link
-
 ## Authentication section
 
 ### Register
