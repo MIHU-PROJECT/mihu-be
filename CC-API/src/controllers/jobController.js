@@ -130,7 +130,7 @@ const searchJobsByCategory = async (req, res) => {
         }
 
         return res.status(200).json({
-            jobs,
+            category,
             message: `Jobs with category, success to fetch`,
         })
     } catch (error) {
