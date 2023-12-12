@@ -120,23 +120,27 @@ const deleteJobById = async (req, res) => {
 
 const searchJobsByCategory = async (req, res) => {
     try {
-        const category = req.params.category;
-        const jobs = await Category.find({ 'category.name': category });
+        const categoryName = req.params.category
+        const category = await Category.findOne({ name: categoryName })
 
-        if (!jobs || jobs.length === 0) {
+        if (!category) {
             return res.status(404).json({
-                message: `No jobs found in the category: ${category}`,
-            });
+                message: `Category is not valid`,
+            })
         }
 
-        return res.status(200).json(jobs);
+        return res.status(200).json({
+            jobs,
+            message: `Jobs with category, success to fetch`,
+        })
     } catch (error) {
-        console.error(error);
+        console.error(error)
         return res.status(500).json({
             message: 'Error searching jobs by category',
-        });
+        })
     }
-};
+}
+
 module.exports = {
      getAllJobs,
      getJobById,
