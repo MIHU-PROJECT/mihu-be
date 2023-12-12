@@ -9,8 +9,16 @@ const categorySchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-    }
-})
+    },
+    categoryName: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    });
 
 const Category = mongoose.model('Category', categorySchema);
 
@@ -51,5 +59,6 @@ const seedCategories = async () => {
         console.error('Error seeding categories:', error);
     }
 }
+    
 
 module.exports = { Category, seedCategories }

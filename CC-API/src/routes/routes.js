@@ -19,8 +19,13 @@ const {
     addJob,
     getJobById,
     updateJobById,
-    deleteJobById
+    deleteJobById,
+    searchJobsByCategory
 } = require('../controllers/jobController')
+
+const {
+    searchJobsByName,
+} = require('../controllers/searchController')
 
 // Mendefinisikan Route Auth
 router.post('/register', Register);
@@ -41,5 +46,7 @@ router.put('/jobs/:_id', authenticateToken, updateJobById)
 router.delete('/jobs/:_id', authenticateToken, deleteJobById)
 
 // Search JobByKategori? && Search JobByName
+router.get('/jobs/category/:category', authenticateToken, searchJobsByCategory);
+router.get('/jobs/search/:name', authenticateToken, searchJobsByName);
 
 module.exports = router;
