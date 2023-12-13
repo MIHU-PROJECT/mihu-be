@@ -29,6 +29,7 @@
     
     ```
     {
+      "error": false,
       "message": "Register berhasil"
     }
     ```
@@ -57,11 +58,15 @@
     
     ```
     {
-      "_id": "6573496fdc3e65e0bc9dbbdd",
-      "username": "myAccount",
-      "email": "myAccount@example.com",
-      "accessToken": "your-accessToken-key",
-      "refreshToken": "your-refreshToken-key"
+      "error": false,
+      "message": "success",
+      "loginResult": {
+          "_id": "6573496fdc3e65e0bc9dbbdd",
+          "username": "myAccount",
+          "email": "myAccount@example.com",
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTczNDk2ZmRjM2U2NWUwYmM5ZGJiZGQiLCJpYXQiOjE3MDI0NDMyODcsImV4cCI6MTcwMjUyOTY4N30.yt7hHdLthFGLKpzFHFRVbtVsVm8JXChIER-43f71OnM",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTczNDk2ZmRjM2U2NWUwYmM5ZGJiZGQiLCJpYXQiOjE3MDI0NDMyODcsImV4cCI6MTcwMjUyOTY4N30.xrYn-psuVmoyckMPsjIMGSkuCCEjVtMPSvpE9t3Z3Fg"
+      }
     }
     ```
 
@@ -95,19 +100,24 @@
 
 * Response
     ```
-    [
-      {
-        "_id": "657349xxxx",
-        "username": "myAccount",
-        "email": "myAccount@example.com",
-        "password": "$2b$10$MPBwI7TbyqIdIXNolU0iDOkJxlDedN1zf0udgQqYWSHskr2MqtaCu",
-        "__v": 0,
-        "address": "Jl. Kebayoran Kemanggi No.2, Indonesia"
-      },
-      {
-        ... Other users details
-      }
-    ]
+    {
+      "error": false,
+      "message": "Users fetched successfully",
+      "users": [
+          {
+            "_id": "657349xxxx",
+            "username": "myAccount",
+            "email": "myAccount@example.com",
+            "password": "$2b$10$Mm6yBvh/vCKgy82Xn...",
+            "__v": 0,
+            "address": "Jl. Kebayoran Kemanggi No.2, Indonesia",
+            "refreshToken": "your-refreshToken-key"
+          },
+          {
+            ... Other users details.
+          }
+      ]
+    }
     ```
 
 ### Get User by Id (Detail User)
@@ -123,7 +133,9 @@
 
 * Response
     ```
-    [
+    {
+      "error": false,
+      "message": "User details berhasil didapatkan",
       "user": {
           "_id": "65734xxxxx",
           "username": "myAccount",
@@ -132,7 +144,7 @@
           "address": "Jl. Kebayoran Kemanggi No.2, Indonesia"
       },
       "message": "User details berhasil didapatkan"
-    ]
+    }
     ```
 
 ### Update User by Id
@@ -160,15 +172,14 @@
 
 * Response
     ```
-    [
-      {
-        "user": {
-        "_id": "6573496fdc3e65e0bc9dbbdd",
-        "username": "NewUsernameExample",
-        "email": "NewAccount@example.com",
-        "address": "Jl. Soekarno Hatta no.2, Indonesia"
-      },
-      "message": "User details updated successfully!"
-      }
-    ]
+    {
+      "error": false,
+      "message": "User details updated successfully!",
+      "user": {
+          "_id": "6573496fdc3e65e0bc9dbbdd",
+          "username": "myAccount",
+          "email": "myAccount@example.com",
+          "address": "Jl. Kebayoran No.2, Indonesia"
+        }       
+    }
     ```

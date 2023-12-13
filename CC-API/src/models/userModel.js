@@ -8,7 +8,7 @@ const workerSchema = new mongoose.Schema({
 })
 
 const userSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true,
     },
