@@ -5,9 +5,16 @@ const { Users } = require('../models/userModel')
 const getAllJobs = async (req, res) => {
     try {
         const jobs = await Jobs.find()
-        return res.status(200).json(jobs)
+        return res.status(200).json({
+            error: false,
+            message: "Success fetch all jobs",
+            jobList: {
+                jobs
+            }
+        })
     } catch(error){
         return res.status(500).json({
+            error: true,
             message: "Error getting all jobs"
         })
     }
@@ -22,7 +29,11 @@ const getJobById = async (req, res) => {
             message: "Job not found!"
         })
 
-        res.status(200).json({ job })
+        res.status(200).json({ 
+            error: false,
+            message: "Job fetched successfully",
+            job 
+        })
     } catch(error){
         res.status(500).json({ 
             message: 'Failed fetch a Job'
@@ -52,12 +63,14 @@ const addJob = async (req, res) => {
         });
   
         return res.status(201).json({
+            error: false,
             message: "Job added successfully",
             Jobs: newJob,
         });
     } catch (error) {
         console.error(error);
         return res.status(500).json({
+            error: true,
             message: 'Error adding job',
         })
     }
@@ -86,11 +99,13 @@ const updateJobById = async (req, res) => {
         })
 
         return res.status(200).json({
+            error: false,
             message: "Job updated successfully",
             Jobs: updatedJob
         })
     } catch(error) {
         return res.status(500).json({
+            error: true,
             message: "Failed to update job"
         })
     }
