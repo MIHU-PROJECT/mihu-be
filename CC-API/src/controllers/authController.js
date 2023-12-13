@@ -27,13 +27,14 @@ const Register = async (req, res) => {
         await newUser.save();
 
         return res.status(201).json({
-            message: 'Register berhasil'
+            error: false,
+            message: 'Register Successfull'
         });
 
     } catch (err) {
         console.log(err)
         return res.status(500).json({
-            message: 'Internal Server Error'
+            message: 'Register failed'
         });
     }
 }
