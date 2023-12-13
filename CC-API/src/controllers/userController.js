@@ -4,10 +4,15 @@ const { Users } = require('../models/userModel');
 const getAllUsers = async (req, res) => {
     try {
         const users = await Users.find()
-        res.send(users)
+        res.send({
+            error: false,
+            message: "Users fetched successfully",
+            users
+        })
     } catch (err) {
         console.log(err)
         return res.status(500).json({
+            error: true,
             message: 'Users Gagal ditemukan'
         });
     }
@@ -29,12 +34,14 @@ const getUserById = async (req, res) => {
         }
 
         return res.status(200).json({
-            user,
+            error: false,
             message: 'User details berhasil didapatkan',
+            user
         })
     } catch (error) {
         console.error(error)
         return res.status(500).json({
+            error: true,
             message: 'Gagal mendapatkan User!'
         })
     }
@@ -72,12 +79,14 @@ const updateUserById = async (req, res) => {
         };
 
         return res.status(200).json({
-            user: updatedUser,
+            error: false,
             message: 'User details updated successfully!',
+            user: updatedUser
         });
     } catch (err) {
         console.log(err);
         return res.status(500).json({
+            error: true,
             message: 'User gagal untuk diperbarui',
         });
     }
