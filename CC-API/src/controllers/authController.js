@@ -82,11 +82,16 @@ const Login = async (req, res) => {
         });
             
         return res.status(201).json({
-            _id, username, email, accessToken, refreshToken
+            error: false,
+            message: 'success',
+            loginResult: {
+                _id, username, email, accessToken, refreshToken
+            }
         });
     } catch(err) {
-        return res.status(404).json({
-            message: 'Email tidak ditemukan'
+        return res.status(500).json({
+            error: true,
+            message: 'Login failed'
         })
     }
 }
