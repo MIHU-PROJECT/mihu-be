@@ -92,11 +92,8 @@ const updateUserById = async (req, res) => {
     }
 };
 
-const uploadPictureImageByUserId = (req, res) => {}
-
 module.exports = { 
     getAllUsers,
     getUserById,
-    updateUserById,
-    uploadPictureImageByUserId
+    updateUserById
  }

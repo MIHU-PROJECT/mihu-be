@@ -45,7 +45,7 @@ router.get('/jobs/:_id', authenticateToken, getJobById)
 router.put('/jobs/:_id', authenticateToken, updateJobById)
 router.delete('/jobs/:_id', authenticateToken, deleteJobById)
 
-// Search JobByKategori? && Search JobByName
+// Search JobByKategori? & Search JobByName
 router.get('/jobs/category/:category', authenticateToken, searchJobsByCategory);
 router.get('/jobs/search/:name', authenticateToken, searchJobsByName);
 

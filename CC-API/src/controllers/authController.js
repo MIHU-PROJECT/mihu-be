@@ -42,21 +42,23 @@ const Register = async (req, res) => {
 const Login = async (req, res) => {
     try {
         const getUserData = await Users.findOne({
-            email: req.body.email
-        })
+            email: { $regex: new RegExp(req.body.email, 'i') }
+        });
 
-        if(!getUserData) {
+        if (!getUserData) {
             return res.status(404).json({
+                error: true,
                 message: 'Email tidak ditemukan'
             });
         }
 
-        const passMatching = await bcrypt.compare(req.body.password, getUserData.password)
-        
-        if(!passMatching){
+        const passMatching = await bcrypt.compare(req.body.password, getUserData.password);
+
+        if (!passMatching) {
             return res.status(401).json({
+                error: true,
                 message: 'Password tidak cocok'
-            })
+            });
         }
 
         const { 
@@ -67,7 +69,7 @@ const Login = async (req, res) => {
 
         const accessToken = jwt.sign({ userId: getUserData._id }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '1d'
-        });
+        })
 
         const refreshToken = jwt.sign({ userId: getUserData._id }, process.env.REFRESH_TOKEN_SECRET, {
             expiresIn: '1d'
@@ -89,13 +91,14 @@ const Login = async (req, res) => {
                 _id, username, email, accessToken, refreshToken
             }
         });
-    } catch(err) {
+    } catch (err) {
         return res.status(500).json({
             error: true,
             message: 'Login failed'
-        })
+        });
     }
-}
+};
+
 
 const refreshToken = async (req, res) => {
     const refreshToken = req.cookies.refreshToken;
