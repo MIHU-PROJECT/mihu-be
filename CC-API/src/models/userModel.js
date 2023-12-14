@@ -14,24 +14,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    address: {
-        type: String,
-    },
-    role: {
-        type: String,
-        enum: ['Worker', 'Recruiter'],
-    },
-    workerInfo: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Worker',
-    },
-    RecruiterInfo: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Recruiter',
-    },
-    refreshToken: {
-        type: String,
-    },
+    // refreshToken: {
+    //     type: String,
+    // },
 });
 
 const Users = mongoose.model('Users', userSchema);

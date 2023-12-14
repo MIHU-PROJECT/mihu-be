@@ -2,10 +2,13 @@ const router = require('express').Router();
 const authenticateToken = require('../middleware/AuthenticateToken');
 
 const { 
-    Login, 
-    Register, 
+    RecruiterLogin, 
+    WorkerLogin, 
+    RecruiterRegister, 
+    WorkerRegister,
     Logout, 
-    refreshToken, 
+    CheckAuth,
+    // refreshToken, 
 } = require('../controllers/authController')
 
 const {
@@ -26,14 +29,20 @@ const {
 
 
 // Authenthication management
-router.post('/register', Register);
+// router.post('/register', Register);
 
-router.post('/login', Login)
-// login for Worker
-// login for Recruiter
+// router.post('/login', Login)
 
-router.get('/token', authenticateToken, refreshToken)
-router.delete('/logout', Logout)
+// Auth for Worker
+router.post('/worker/register', WorkerRegister);
+router.post('/worker/login', WorkerLogin);
+// Auth for Recruiter
+router.post('/recruiter/register', RecruiterRegister);
+router.post('/recruiter/login', RecruiterLogin);
+
+// router.get('/token', authenticateToken, refreshToken)
+router.get('/check-auth', authenticateToken, CheckAuth)
+// router.delete('/logout', Logout)
 
 // User Management
 router.get('/users', getAllUsers)
@@ -50,8 +59,5 @@ router.get('/jobs/search/name/:name', searchJobByName);
 router.get('/jobs/search/category/:category', searchJobByCategory);
 
 // Order route management
-
-// History
-
 
 module.exports = router;

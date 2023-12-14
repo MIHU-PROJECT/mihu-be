@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const categorySchema = new mongoose.Schema({
+const categoriesSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -12,7 +12,7 @@ const categorySchema = new mongoose.Schema({
     }
 });
 
-const Category = mongoose.model('Category', categorySchema);
+const Categories = mongoose.model('Categories', categoriesSchema);
 
 const seedCategories = async () => {
     try {
@@ -26,12 +26,12 @@ const seedCategories = async () => {
                 description: 'Services related to electrical issues.',
             },
             {
-                name: 'Plumbing & Laundry',
-                description: 'Services related to plumbing and laundry tasks.',
+                name: 'Plumbing',
+                description: 'Services related to plumbing tasks.',
             },
             {
-                name: 'Ironing',
-                description: 'Services related to ironing clothes.',
+                name: 'Laundry and Ironing',
+                description: 'Services related to laundry and ironing clothes.',
             },
             {
                 name: 'Help Moving',
@@ -40,7 +40,7 @@ const seedCategories = async () => {
         ]
 
         for(const category of categories) {
-            await Category.findOneAndUpdate(
+            await Categories.findOneAndUpdate(
                 { name: category.name },
                 category,
                 { upsert: true, new: true }
@@ -52,4 +52,4 @@ const seedCategories = async () => {
     }
 }
 
-module.exports = { Category, seedCategories }
+module.exports = { Categories, seedCategories }

@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const { seedCategories } = require('../models/categoryModel');
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ mongoose.set("strictQuery", false);
 const connectDatabase = async () => {
   try {
     await mongoose.connect(databaseUrl)
+
+    await seedCategories()
+
       console.log('Koneksi MongoDB berhasil.')
   } catch (error) {
     console.error('Gagal terhubung ke MongoDB:', error.message)

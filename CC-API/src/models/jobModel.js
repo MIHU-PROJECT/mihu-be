@@ -5,23 +5,30 @@ const jobSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        default: '',
+        required: true
+    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
+        ref: 'Categories',
         required: true
     },
     price: {
         type: Number,
         required: true
     },
-    description: {
-        type: String
-    },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users',
+        ref: 'Recruiters',
         required: true
-    }
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+      required: true
+    },
 }, { timestamps: true })
 
 const Jobs = mongoose.model('Jobs', jobSchema)
