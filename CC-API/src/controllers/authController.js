@@ -61,11 +61,7 @@ const Login = async (req, res) => {
             });
         }
 
-        const { 
-            _id, 
-            username, 
-            email 
-        } = getUserData;
+        const { _id, username, email } = getUserData;
 
         const accessToken = jwt.sign({ userId: getUserData._id }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '1d'
@@ -75,8 +71,7 @@ const Login = async (req, res) => {
             expiresIn: '1d'
         })
         
-        await Users.findByIdAndUpdate(
-            _id, { refreshToken: refreshToken });
+        await Users.findByIdAndUpdate(_id, { refreshToken: refreshToken });
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
@@ -86,25 +81,25 @@ const Login = async (req, res) => {
             
         return res.status(201).json({
             error: false,
-            message: 'success',
+            message: 'Success',
             loginResult: {
                 _id, username, email, accessToken, refreshToken
             }
-        });
+        })
     } catch (err) {
         return res.status(500).json({
             error: true,
             message: 'Login failed'
-        });
+        })
     }
-};
-
+}
 
 const refreshToken = async (req, res) => {
     const refreshToken = req.cookies.refreshToken;
 
     if (!refreshToken) {
         return res.status(401).json({
+            error: true,
             message: 'Token tidak tersedia!'
         });
     }
@@ -118,6 +113,7 @@ const refreshToken = async (req, res) => {
         });
         if (!user) {
             return res.status(403).json({
+                error: true,
                 message: 'Token tidak valid'
             });
         }

@@ -122,24 +122,52 @@ const deleteJobById = async (req, res) => {
         }
     
         res.status(200).json({ 
+            error: false,
             message: 'Job deleted successfully', 
             Jobs: deletedJob 
         })
     } catch (error) {
         console.error(error);
         res.status(500).json({ 
+            error: true,
             message: 'Failed to delete job' 
         })
     }
 }
 
-const searchJobsByCategory = async (req, res) => {
+const searchJobByName = async (req, res) => {
+    try {
+        const name = req.params.name;
+        const jobs = await Jobs.find({ title: { $regex: new RegExp(name, 'i') } });
+
+        if (!jobs || jobs.length === 0) {
+            return res.status(404).json({
+                error: true,
+                message: `No jobs found with the name: ${name}`,
+            })
+        }
+
+        return res.status(200).json({
+            error: false,
+            message: `Jobs fetched successfully ${name}`,
+            jobs
+        })
+    } catch (error) {
+        return res.status(500).json({
+            error: true,
+            message: 'Error searching jobs by name',
+        });
+    }
+}
+
+const searchJobByCategory = async (req, res) => {
     try {
         const categoryName = req.params.category;
         const category = await Category.findOne({ name: categoryName });
 
         if (!category) {
             return res.status(404).json({
+                error: true,
                 message: `Category is not valid`,
             });
         }
@@ -155,13 +183,12 @@ const searchJobsByCategory = async (req, res) => {
             }
         });
     } catch (error) {
-        console.error(error);
         return res.status(500).json({
+            error: true,
             message: 'Error searching jobs by category',
         });
     }
-};
-
+}
 
 module.exports = {
      getAllJobs,
@@ -169,5 +196,6 @@ module.exports = {
      addJob,
      updateJobById,
      deleteJobById,
-     searchJobsByCategory
+     searchJobByName,
+     searchJobByCategory
 }

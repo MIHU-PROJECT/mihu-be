@@ -90,7 +90,7 @@ const updateUserById = async (req, res) => {
             message: 'User gagal untuk diperbarui',
         });
     }
-};
+}
 
 module.exports = { 
     getAllUsers,

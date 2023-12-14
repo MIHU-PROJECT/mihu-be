@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ['Worker', 'Recruiter'],
-        default: 'Worker',
     },
     workerInfo: {
         type: mongoose.Schema.Types.ObjectId,

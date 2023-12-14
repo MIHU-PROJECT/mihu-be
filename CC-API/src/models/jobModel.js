@@ -17,9 +17,6 @@ const jobSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    jobImage: {
-        type: String,
-    },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users',
