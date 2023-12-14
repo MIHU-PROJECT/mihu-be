@@ -64,11 +64,11 @@ const Login = async (req, res) => {
         const { _id, username, email } = getUserData;
 
         const accessToken = jwt.sign({ userId: getUserData._id }, process.env.ACCESS_TOKEN_SECRET, {
-            expiresIn: '1d'
+            expiresIn: '1y'
         })
 
         const refreshToken = jwt.sign({ userId: getUserData._id }, process.env.REFRESH_TOKEN_SECRET, {
-            expiresIn: '1d'
+            expiresIn: '1y'
         })
         
         await Users.findByIdAndUpdate(_id, { refreshToken: refreshToken });
