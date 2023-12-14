@@ -22,18 +22,21 @@ const {
     updateUserById
 } = require('../controllers/userController')
 
-const { 
-    getAllJobs,
-    addJob,
-    getJobById,
-    updateJobById,
-    deleteJobById,
-    searchJobByName,
-    searchJobByCategory
-} = require('../controllers/jobController')
-
 const {GetAllCategory} = require('../controllers/categoryController')
 
+const { 
+    GetAllActiveJobs,
+    CreateJob,
+    GetJobById,
+    // updateJobById,
+    // deleteJobById,
+    // searchJobByName,
+    // searchJobByCategory
+} = require('../controllers/jobController')
+
+const {
+  CreateOrder
+} = require('../controllers/orderController')
 
 // Authenthication management
 // router.post('/register', Register);
@@ -60,14 +63,15 @@ router.put('/users/:_id', updateUserById)
 router.get('/categories', GetAllCategory)
 
 // Jobs route management
-router.post('/recruiter/job', authenticateToken, authenticateRecruiter, addJob)
-router.get('/job', authenticateToken, getAllJobs)
-router.get('/jobs/:_id', authenticateToken, getJobById)
+router.post('/recruiter/job', authenticateToken, authenticateRecruiter, CreateJob)
+router.get('/job', authenticateToken, GetAllActiveJobs)
+router.get('/job/:_id', authenticateToken, GetJobById)
 // router.put('/jobs/:_id', authenticateToken, updateJobById)
 // router.delete('/jobs/:_id', authenticateToken, deleteJobById)
 // router.get('/jobs/search/name/:name', searchJobByName);
 // router.get('/jobs/search/category/:category', searchJobByCategory);
 
 // Order route management
+router.post('/worker/job/:_id', authenticateToken, authenticateWorker, CreateOrder)
 
 module.exports = router;

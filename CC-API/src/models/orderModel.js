@@ -6,14 +6,14 @@ const orderSchema = new mongoose.Schema({
         ref: 'Jobs',
         required: true
     },
-    takenBy: {
+    workerId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Recruiters',
+        ref: 'Workers',
         required: true
     },
-    isDone: {
+    isCompleted: {
       type: Boolean,
-      default: true,
+      default: false,
       required: true
     },
 }, { timestamps: true })

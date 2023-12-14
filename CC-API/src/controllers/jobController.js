@@ -2,25 +2,25 @@ const { Jobs } = require('../models/jobModel')
 const { Categories } = require('../models/categoryModel')
 const { Recruiters } = require('../models/recruiterModel')
 
-const getAllJobs = async (req, res) => {
+const GetAllActiveJobs = async (req, res) => {
     try {
-        const jobs = await Jobs.find()
+        const jobs = await Jobs.find({ isActive: true })
         return res.status(200).json({
             error: false,
-            message: "Success fetch all jobs",
-            jobList: {
+            message: "Success fetch all active jobs",
+            data: {
                 jobs
             }
         })
     } catch(error){
         return res.status(500).json({
             error: true,
-            message: "Error getting all jobs"
+            message: "Error getting all active jobs"
         })
     }
 }
 
-const getJobById = async (req, res) => {
+const GetJobById = async (req, res) => {
     try {
         const jobId = req.params._id
         const job = await Jobs.findById(jobId)
@@ -41,24 +41,22 @@ const getJobById = async (req, res) => {
     }
 }
 
-const addJob = async (req, res) => {
+const CreateJob = async (req, res) => {
     try {
-        console.log(req.body) 
-
         const { name, description, categoryId, price } = req.body;
   
-        const categoryObject = await Categories.findOne({}, {_id: categoryId})
+        const categoryObject = await Categories.findById(categoryId)
         const findRecruiterId = await Recruiters.findOne({}, { userId: req.user.userId })
   
         if(!categoryObject) {
             return res.status(400).json({
-                message: 'Invalid category',
+                message: 'Invalid category id',
             });
         }
 
         const newJob = await Jobs.create({
             name,
-            category: categoryObject._id,
+            categoryId: categoryObject._id,
             price,
             description,
             createdBy: findRecruiterId._id
@@ -78,6 +76,26 @@ const addJob = async (req, res) => {
         })
     }
 }
+
+//Not priority
+const getAllJobs = async (req, res) => {
+    try {
+        const jobs = await Jobs.find()
+        return res.status(200).json({
+            error: false,
+            message: "Success fetch all jobs",
+            data: {
+                jobs
+            }
+        })
+    } catch(error){
+        return res.status(500).json({
+            error: true,
+            message: "Error getting all jobs"
+        })
+    }
+}
+    
 
 //Not priority
 const updateJobById = async (req, res) => {
@@ -198,9 +216,9 @@ const searchJobByCategory = async (req, res) => {
 }
 
 module.exports = {
-     getAllJobs,
-     getJobById,
-     addJob,
+     GetAllActiveJobs,
+     GetJobById,
+     CreateJob,
      // updateJobById,
      // deleteJobById,
      // searchJobByName,
