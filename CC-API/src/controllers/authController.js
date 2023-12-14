@@ -162,11 +162,15 @@ const Login = async (req, res, role) => {
 }
 
 const CheckAuth = async (req, res) => {
+  const user = await Users.findById(req.user.userId);
+
   return res.status(200).json({
     error: false,
     message: 'Auth success',
     data: {
       userId: req.user.userId,
+      username: user.username,
+      email: user.email,
       role: req.user.role
     }
   });
