@@ -1,12 +1,5 @@
 const mongoose = require('mongoose')
 
-const workerSchema = new mongoose.Schema({
-    specialization: {
-        type: String,
-        required: true,
-    }
-})
-
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -41,9 +34,7 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-const Worker = mongoose.model('Worker', workerSchema);
-
 const Users = mongoose.model('Users', userSchema);
 
-module.exports = { Users, Worker }
+module.exports = { Users }
 

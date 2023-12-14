@@ -25,9 +25,13 @@ const {
 } = require('../controllers/jobController')
 
 
-// Mendefinisikan Route Auth
+// Authenthication management
 router.post('/register', Register);
+
 router.post('/login', Login)
+// login for Worker
+// login for Recruiter
+
 router.get('/token', authenticateToken, refreshToken)
 router.delete('/logout', Logout)
 
@@ -36,7 +40,7 @@ router.get('/users', getAllUsers)
 router.get('/users/:_id', getUserById)
 router.put('/users/:_id', updateUserById)
 
-// Mendefinsikan Route Job
+// Jobs route management
 router.post('/jobs', authenticateToken, addJob)
 router.get('/jobs', authenticateToken, getAllJobs)
 router.get('/jobs/:_id', authenticateToken, getJobById)
@@ -45,7 +49,7 @@ router.delete('/jobs/:_id', authenticateToken, deleteJobById)
 router.get('/jobs/search/name/:name', searchJobByName);
 router.get('/jobs/search/category/:category', searchJobByCategory);
 
-// Order
+// Order route management
 
 // History
 
