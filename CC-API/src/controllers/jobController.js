@@ -43,7 +43,7 @@ const getJobById = async (req, res) => {
 
 const addJob = async (req, res) => {
     try {
-        const { title, category, price, description } = req.body;
+        const { name, category, price, description } = req.body;
   
         const categoryObject = await Category.findOne({ name: category })
         const findUserId = await Users.findOne({}, { _id: req.userId })
@@ -55,7 +55,7 @@ const addJob = async (req, res) => {
         }
 
         const newJob = await Jobs.create({
-            title,
+            name,
             category: categoryObject._id,
             price,
             description,
@@ -79,14 +79,14 @@ const addJob = async (req, res) => {
 const updateJobById = async (req, res) => {
     try {
         const jobId = req.params._id
-        const { title, category, price, description } = req.body;
+        const { name, category, price, description } = req.body;
 
         const categoryObject = await Category.findOne({ name: category })
 
         const updatedJob = await Jobs.findByIdAndUpdate(
             jobId,
             { $set: { 
-                title,
+                name,
                 category: categoryObject,
                 price,
                 description 
@@ -138,7 +138,7 @@ const deleteJobById = async (req, res) => {
 const searchJobByName = async (req, res) => {
     try {
         const name = req.params.name;
-        const jobs = await Jobs.find({ title: { $regex: new RegExp(name, 'i') } });
+        const jobs = await Jobs.find({ name: { $regex: new RegExp(name, 'i') } });
 
         if (!jobs || jobs.length === 0) {
             return res.status(404).json({
@@ -149,7 +149,7 @@ const searchJobByName = async (req, res) => {
 
         return res.status(200).json({
             error: false,
-            message: `Jobs fetched successfully ${name}`,
+            message: `Jobs fetched successfully`,
             jobs
         })
     } catch (error) {

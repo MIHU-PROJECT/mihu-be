@@ -42,8 +42,8 @@ router.get('/jobs', authenticateToken, getAllJobs)
 router.get('/jobs/:_id', authenticateToken, getJobById)
 router.put('/jobs/:_id', authenticateToken, updateJobById)
 router.delete('/jobs/:_id', authenticateToken, deleteJobById)
-router.get('/jobs/search/:name', searchJobByName);
-router.get('/jobs/search/:category', searchJobByCategory);
+router.get('/jobs/search/name/:name', searchJobByName);
+router.get('/jobs/search/category/:category', searchJobByCategory);
 
 // Order
 
