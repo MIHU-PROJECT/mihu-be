@@ -14,8 +14,8 @@ const authenticateToken = (req, res, next) => {
         message: "Wrong Token or expired Token"
       });
 
-      req.user.userId = decoded.userId;
-      req.user.role = decoded.role;
+      user = {userId: decoded.userId, role: decoded.role};
+      req.user = user;
       next();
     });
 }

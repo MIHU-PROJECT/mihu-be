@@ -130,7 +130,7 @@ const Login = async (req, res, role) => {
           });
         }
 
-        const accessToken = jwt.sign({ userId: getUserData._id, role }, process.env.ACCESS_TOKEN_SECRET, {
+        const accessToken = jwt.sign({ userId: _id, role }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '1y'
         })
 
@@ -139,7 +139,6 @@ const Login = async (req, res, role) => {
         // })
         
         // await Users.findByIdAndUpdate(_id, { refreshToken: refreshToken });
-        await Users.findByIdAndUpdate(_id);
 
         // res.cookie('refreshToken', refreshToken, {
         //     httpOnly: true,

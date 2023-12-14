@@ -1,6 +1,6 @@
 const { Jobs } = require('../models/jobModel')
-const { Category } = require('../models/categoryModel')
-const { Users } = require('../models/userModel')
+const { Categories } = require('../models/categoryModel')
+const { Recruiters } = require('../models/recruiterModel')
 
 const getAllJobs = async (req, res) => {
     try {
@@ -43,10 +43,12 @@ const getJobById = async (req, res) => {
 
 const addJob = async (req, res) => {
     try {
-        const { name, category, price, description } = req.body;
+        console.log(req.body) 
+
+        const { name, description, categoryId, price } = req.body;
   
-        const categoryObject = await Category.findOne({ name: category })
-        const findUserId = await Users.findOne({}, { _id: req.userId })
+        const categoryObject = await Categories.findOne({}, {_id: categoryId})
+        const findRecruiterId = await Recruiters.findOne({}, { userId: req.user.userId })
   
         if(!categoryObject) {
             return res.status(400).json({
@@ -59,7 +61,7 @@ const addJob = async (req, res) => {
             category: categoryObject._id,
             price,
             description,
-            createdBy: findUserId
+            createdBy: findRecruiterId._id
         });
   
         return res.status(201).json({
@@ -67,15 +69,17 @@ const addJob = async (req, res) => {
             message: "Job added successfully",
             Jobs: newJob,
         });
+
     } catch (error) {
         console.error(error);
         return res.status(500).json({
             error: true,
-            message: 'Error adding job',
+            message: 'Server error adding job',
         })
     }
 }
 
+//Not priority
 const updateJobById = async (req, res) => {
     try {
         const jobId = req.params._id
@@ -111,6 +115,7 @@ const updateJobById = async (req, res) => {
     }
 }
 
+//Not priority
 const deleteJobById = async (req, res) => {
     try {
         const jobId = req.params._id;
@@ -135,6 +140,7 @@ const deleteJobById = async (req, res) => {
     }
 }
 
+//Not priority
 const searchJobByName = async (req, res) => {
     try {
         const name = req.params.name;
@@ -160,6 +166,7 @@ const searchJobByName = async (req, res) => {
     }
 }
 
+//Not priority
 const searchJobByCategory = async (req, res) => {
     try {
         const categoryName = req.params.category;
@@ -194,8 +201,8 @@ module.exports = {
      getAllJobs,
      getJobById,
      addJob,
-     updateJobById,
-     deleteJobById,
-     searchJobByName,
-     searchJobByCategory
+     // updateJobById,
+     // deleteJobById,
+     // searchJobByName,
+     // searchJobByCategory
 }

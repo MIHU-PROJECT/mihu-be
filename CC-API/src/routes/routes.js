@@ -1,5 +1,10 @@
 const router = require('express').Router();
-const authenticateToken = require('../middleware/AuthenticateToken');
+const authenticateToken = require('../middleware/authenticateToken');
+
+const {
+  authenticateRecruiter, 
+  authenticateWorker
+} = require('../middleware/authenticateRole');
 
 const { 
     RecruiterLogin, 
@@ -27,6 +32,8 @@ const {
     searchJobByCategory
 } = require('../controllers/jobController')
 
+const {GetAllCategory} = require('../controllers/categoryController')
+
 
 // Authenthication management
 // router.post('/register', Register);
@@ -49,14 +56,17 @@ router.get('/users', getAllUsers)
 router.get('/users/:_id', getUserById)
 router.put('/users/:_id', updateUserById)
 
+// All Available Category
+router.get('/categories', GetAllCategory)
+
 // Jobs route management
-router.post('/jobs', authenticateToken, addJob)
-router.get('/jobs', authenticateToken, getAllJobs)
+router.post('/recruiter/job', authenticateToken, authenticateRecruiter, addJob)
+router.get('/job', authenticateToken, getAllJobs)
 router.get('/jobs/:_id', authenticateToken, getJobById)
-router.put('/jobs/:_id', authenticateToken, updateJobById)
-router.delete('/jobs/:_id', authenticateToken, deleteJobById)
-router.get('/jobs/search/name/:name', searchJobByName);
-router.get('/jobs/search/category/:category', searchJobByCategory);
+// router.put('/jobs/:_id', authenticateToken, updateJobById)
+// router.delete('/jobs/:_id', authenticateToken, deleteJobById)
+// router.get('/jobs/search/name/:name', searchJobByName);
+// router.get('/jobs/search/category/:category', searchJobByCategory);
 
 // Order route management
 
