@@ -133,18 +133,6 @@ const Login = async (req, res, role) => {
         const accessToken = jwt.sign({ userId: _id, role }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '1y'
         })
-
-        // const refreshToken = jwt.sign({ userId: getUserData._id }, process.env.REFRESH_TOKEN_SECRET, {
-        //     expiresIn: '1y'
-        // })
-        
-        // await Users.findByIdAndUpdate(_id, { refreshToken: refreshToken });
-
-        // res.cookie('refreshToken', refreshToken, {
-        //     httpOnly: true,
-        //     maxAge: 24 * 60 * 60 * 1000,
-        //     path: '/',
-        // });
             
         return res.status(201).json({
             error: false,
@@ -181,68 +169,5 @@ module.exports = {
     WorkerRegister,
     RecruiterLogin,
     WorkerLogin,
-    CheckAuth,
-    // Logout,
-    // refreshToken,
+    CheckAuth
 }
-
-// const refreshToken = async (req, res) => {
-//     const refreshToken = req.cookies.refreshToken;
-
-//     if (!refreshToken) {
-//         return res.status(401).json({
-//             error: true,
-//             message: 'Token tidak tersedia!'
-//         });
-//     }
-
-//     try {
-//         const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
-
-//         const user = await Users.findOne({
-//             _id: decoded._id,
-//             refreshToken: refreshToken
-//         });
-//         if (!user) {
-//             return res.status(403).json({
-//                 error: true,
-//                 message: 'Token tidak valid'
-//             });
-//         }
-
-//         const { _id, username, email } = user;
-//         const accessToken = jwt.sign({ _id, username, email }, process.env.ACCESS_TOKEN_SECRET, {
-//             expiresIn: '15m'
-//         });
-
-//         return res.status(200).json({
-//             _id, username, email, accessToken
-//         });
-//     } catch (err) {
-//         console.log(err);
-//         return res.status(403).json({
-//             message: 'Token tidak valid'
-//         });
-//     }
-// }
-
-// const Logout = async (req, res) => {
-//     const refreshToken = req.cookies.refreshToken
-
-//     if(!refreshToken) return res.status(204)
-
-//     const user = await Users.findOneAndUpdate(
-//         { refreshToken: refreshToken },
-//         { $unset: { refreshToken: 1 } },
-//         { new: true }
-//     );
-
-//     if(!user) return res.status(204);
-
-//     res.clearCookie('refreshToken');
-//     res.clearCookie('accessToken');
-
-//     return res.status(200).json({
-//         message: 'Logout berhasil'
-//     });
-// }

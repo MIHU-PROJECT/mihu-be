@@ -1,4 +1,4 @@
-const {Categories} = require("../models/categoryModel");
+const { Categories } = require("../models/categoryModel");
 const { Jobs } = require("../models/jobModel");
 const { Orders } = require("../models/orderModel");
 const { Workers } = require("../models/workerModel");
