@@ -8,6 +8,6 @@ const storage = new Storage({
     projectId: process.env.PROJECT_ID
 })
 
-const bucketName = storage.bucket(process.env.BUCKET_NAME)
+const bucketName = process.env.BUCKET_NAME
 
 module.exports = { storage, bucketName }
