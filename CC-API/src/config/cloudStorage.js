@@ -1,11 +1,10 @@
 const { Storage } = require("@google-cloud/storage");
-const path = require('path')
-const serviceKey = path.join(__dirname, './serviceAccountKey.json')
+const dotenv = require('dotenv');
 
 dotenv.config();
 
 const storage = new Storage({
-    keyFilename: serviceKey,
+    keyFilename: './serviceAccountKey.json',
     projectId: process.env.PROJECT_ID
 })
 
