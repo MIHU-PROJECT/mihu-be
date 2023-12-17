@@ -196,43 +196,22 @@
             "_id": "657077a14efa02ea2514ae31",
             "name": "Cleaning",
             "__v": 0,
-            "description": "Services related to cleaning tasks."
+            "description": "Services related to cleaning tasks.",
+            "categoriesImage": "https://storage.googleapis.com/${BUCKET_NAME}/Cleaning.jpg"
           },
           {
             "_id": "657077a14efa02ea2514ae33",
             "name": "Electrical Help",
             "__v": 0,
-            "description": "Services related to electrical issues."
+            "description": "Services related to electrical issues.",
+            "categoriesImage": "https://storage.googleapis.com/${BUCKET_NAME}/Electrical%20Help.jpg"
           },
           {
-            "_id": "657077a14efa02ea2514ae35",
-            "name": "Plumbing & Laundry",
-            "__v": 0,
-            "description": "Services related to plumbing and laundry tasks."
-          },
-          {
-            "_id": "657077a14efa02ea2514ae37",
-            "name": "Ironing",
-            "__v": 0,
-            "description": "Services related to ironing clothes."
-          },
-          {
-            "_id": "657077a14efa02ea2514ae39",
+            "_id": "657c69397725ecb96a970ce6",
             "name": "Help Moving",
             "__v": 0,
-            "description": "Services related to moving assistance."
-          },
-          {
-            "_id": "657b84c528aea17dab18284d",
-            "name": "Plumbing",
-            "__v": 0,
-            "description": "Services related to plumbing tasks."
-          },
-          {
-            "_id": "657b84c528aea17dab182851",
-            "name": "Laundry and Ironing",
-            "__v": 0,
-            "description": "Services related to laundry and ironing clothes."
+            "description": "Services related to moving assistance.",
+            "categoriesImage": "https://storage.googleapis.com/${BUCKET_NAME}/Help%20Moving.jpg"
           }
        ]
     }
