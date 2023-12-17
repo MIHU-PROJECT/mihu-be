@@ -197,42 +197,49 @@
             "name": "Cleaning",
             "__v": 0,
             "description": "Services related to cleaning tasks."
+            "categoriesImage":	"https://storage.googleapis.com/categories-image/images/Plumbing.jpg"
           },
           {
             "_id": "657077a14efa02ea2514ae33",
             "name": "Electrical Help",
             "__v": 0,
             "description": "Services related to electrical issues."
+            "categoriesImage":	"https://storage.googleapis.com/categories-image/images/Plumbing.jpg"
           },
           {
             "_id": "657077a14efa02ea2514ae35",
             "name": "Plumbing & Laundry",
             "__v": 0,
             "description": "Services related to plumbing and laundry tasks."
+            "categoriesImage":	"https://storage.googleapis.com/categories-image/images/Plumbing.jpg"
           },
           {
             "_id": "657077a14efa02ea2514ae37",
             "name": "Ironing",
             "__v": 0,
             "description": "Services related to ironing clothes."
+            "categoriesImage":	"https://storage.googleapis.com/categories-image/images/Plumbing.jpg"
           },
           {
             "_id": "657077a14efa02ea2514ae39",
             "name": "Help Moving",
             "__v": 0,
             "description": "Services related to moving assistance."
+            "categoriesImage":	"https://storage.googleapis.com/categories-image/images/Plumbing.jpg"
           },
           {
             "_id": "657b84c528aea17dab18284d",
             "name": "Plumbing",
             "__v": 0,
             "description": "Services related to plumbing tasks."
+            "categoriesImage":	"https://storage.googleapis.com/categories-image/images/Plumbing.jpg"
           },
           {
             "_id": "657b84c528aea17dab182851",
             "name": "Laundry and Ironing",
             "__v": 0,
             "description": "Services related to laundry and ironing clothes."
+            "categoriesImage":	"https://storage.googleapis.com/categories-image/images/Plumbing.jpg"
           }
        ]
     }
