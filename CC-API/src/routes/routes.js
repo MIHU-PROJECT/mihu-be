@@ -15,11 +15,11 @@ const {
     // refreshToken, 
 } = require('../controllers/authController')
 
-// const {
-//     getAllUsers,
-//     getUserById,
-//     updateUserById
-// } = require('../controllers/userController')
+const {
+    getAllUsers,
+    getUserById,
+    // updateUserById
+} = require('../controllers/userController')
 
 const {GetAllCategory} = require('../controllers/categoryController')
 
@@ -48,6 +48,11 @@ router.post('/worker/login', WorkerLogin);
 router.post('/recruiter/register', RecruiterRegister);
 router.post('/recruiter/login', RecruiterLogin);
 
+// Get All Users role Worker/Recruiter
+router.get('/users', getAllUsers)
+router.get('/users/:_id', getUserById)
+
+// Check authentication
 router.get('/check-auth', authenticateToken, CheckAuth)
 
 // All Available Category
@@ -68,8 +73,6 @@ router.get('/recruiter/order', authenticateToken, GetMyRecruiterOrderHistory)
 // router.post('/login', Login)
 
 // User Management
-// router.get('/users', getAllUsers)
-// router.get('/users/:_id', getUserById)
 // router.put('/users/:_id', updateUserById)
 
 // router.get('/job/:_id', authenticateToken, GetJobById)
