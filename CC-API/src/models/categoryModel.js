@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { bucketName } = require('../config/cloudStorage')
 
 const categoriesSchema = new mongoose.Schema({
     name: {
@@ -9,6 +10,9 @@ const categoriesSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
+    },
+    categoriesImage: {
+        type: String
     }
 });
 
@@ -20,22 +24,27 @@ const seedCategories = async () => {
             {
                 name: 'Cleaning',
                 description: 'Services related to cleaning tasks.',
+                categoriesImage: `https://storage.googleapis.com/${bucketName}/Cleaning.jpg`
             },
             {
                 name: 'Electrical Help',
                 description: 'Services related to electrical issues.',
+                categoriesImage: `https://storage.googleapis.com/${bucketName}/Electrical%20Help.jpg`
             },
             {
                 name: 'Plumbing',
                 description: 'Services related to plumbing tasks.',
+                categoriesImage: `https://storage.googleapis.com/${bucketName}/Plumbing.jpg`
             },
             {
                 name: 'Laundry and Ironing',
                 description: 'Services related to laundry and ironing clothes.',
+                categoriesImage: `https://storage.googleapis.com/${bucketName}/Laundry%20%26%20Ironing.jpg`
             },
             {
                 name: 'Help Moving',
-                description: 'Services related to moving assistance.'
+                description: 'Services related to moving assistance.',
+                categoriesImage: `https://storage.googleapis.com/${bucketName}/Help%20Moving.jpg`
             }
         ]
 

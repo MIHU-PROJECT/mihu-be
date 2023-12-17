@@ -12,25 +12,13 @@ const {
     RecruiterRegister, 
     WorkerRegister,
     CheckAuth,
-    // refreshToken, 
 } = require('../controllers/authController')
 
-// const {
-//     getAllUsers,
-//     getUserById,
-//     updateUserById
-// } = require('../controllers/userController')
-
-const {GetAllCategory} = require('../controllers/categoryController')
+const { GetAllCategory } = require('../controllers/categoryController')
 
 const { 
     GetAllActiveJobs,
     CreateJob,
-    // GetJobById,
-    // updateJobById,
-    // deleteJobById,
-    // searchJobByName,
-    // searchJobByCategory
 } = require('../controllers/jobController')
 
 const {
@@ -48,6 +36,7 @@ router.post('/worker/login', WorkerLogin);
 router.post('/recruiter/register', RecruiterRegister);
 router.post('/recruiter/login', RecruiterLogin);
 
+// Check authentication for user data
 router.get('/check-auth', authenticateToken, CheckAuth)
 
 // All Available Category
@@ -63,13 +52,10 @@ router.get('/worker/order', authenticateToken, GetMyWorkerOrderHistory)
 router.patch('/recruiter/order/:_id', authenticateToken, authenticateRecruiter, UpdateOrderCompleted)
 router.get('/recruiter/order', authenticateToken, GetMyRecruiterOrderHistory)
 
-// Authenthication management
-// router.post('/register', Register);
-// router.post('/login', Login)
-
-// User Management
+// Users route management
 // router.get('/users', getAllUsers)
-// router.get('/users/:_id', getUserById)
+// router.get('/users/worker/:_id', getAllUsers)
+// router.get('/users/recruiter/:_id', getAllUsers)
 // router.put('/users/:_id', updateUserById)
 
 // router.get('/job/:_id', authenticateToken, GetJobById)
