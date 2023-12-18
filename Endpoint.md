@@ -17,10 +17,11 @@
   - `POST`
 
 - Request Body
+
   - `username` as `string`
   - `email` as `string` must be unique.
   - `password` as `string`
-  
+
     <br/>
 
   ```
@@ -59,6 +60,7 @@
   - `POST`
 
 - Request Body
+
   - `email` as `string` must be unique.
   - `password` as `string`
 
@@ -108,10 +110,11 @@
   - `POST`
 
 - Request Body
+
   - `username` as `string`
   - `email` as `string` must be unique.
   - `password` as `string`
-  
+
     <br/>
 
   ```
@@ -121,7 +124,7 @@
     "email": "recruiter@example.com"
   }
   ```
-  
+
 - Response _(success)_
 
   ```
@@ -150,17 +153,19 @@
   - `POST`
 
 - Request Body
+
   - `email` as `string` must be unique.
   - `password` as `string`
 
     <br/>
-    
+
   ```
   {
      "email": "recruiter@example.com",
      "password": "recruiter123"
   }
   ```
+
 - Response _(success)_
 
   ```
@@ -495,5 +500,71 @@
 > ### Recruiter
 
 ### Get All My Recruiter Order History
+
+- URL
+
+  - `/recruiter/order`
+
+- Method
+
+  - `GET`
+
+- Headers
+
+  - `Authorization` : `<accessToken>`
+
+- Response _(success)_
+
+  ```
+  {
+    "error": false,
+    "message": "Success getting order history",
+    "data": {
+      "orders": [
+        {
+          "name": "Job Name",
+          "category": "Job Category",
+          "description": "Job Description",
+          "price": 100.00,
+          "status": "completed",
+          "worker": "Worker Username",
+          "createdAt": "2023-01-01T00:00:00.000Z",
+          "updatedAt": "2023-01-02T00:00:00.000Z"
+        },
+        {
+          "name": "Another Job",
+          "category": "Another Category",
+          "description": "Another Description",
+          "price": 150.00,
+          "status": "ongoing",
+          "worker": "Another Worker",
+          "createdAt": "2023-02-01T00:00:00.000Z",
+          "updatedAt": "2023-02-02T00:00:00.000Z"
+        },
+        {
+          "name": "Pending Job",
+          "category": "Pending Category",
+          "description": "Pending Description",
+          "price": 200.00,
+          "status": "waiting",
+          "createdAt": "2023-03-01T00:00:00.000Z",
+          "updatedAt": "2023-03-02T00:00:00.000Z"
+        },
+        ...
+      ]
+    }
+  }
+
+  ```
+
+- Response _(fail)_
+
+  ```
+  {
+    "error": true,
+    "message": "Internal Server Error",
+    "data": null
+  }
+  ```
 
 - `Comingsoon`
