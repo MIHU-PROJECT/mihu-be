@@ -499,19 +499,80 @@
 
 > ### Recruiter
 
-### Get All My Recruiter Order History
+### UpdateOrderCompleted
 
 - URL
 
-  - `/recruiter/order`
+  - `/recruiter/order/:_id`
 
 - Method
 
-  - `GET`
+  - `PUT`
 
 - Headers
 
   - `Authorization` : `<accessToken>`
+
+- Response _(success)_
+
+  ```
+  {
+    "error": false,
+    "message": "Success completing order",
+    "data": {
+      "order": {
+        /* Completed Order Object */
+      }
+    }
+  }
+
+  ```
+
+- Response _(fail)_
+
+  ```
+  {
+    "error": true,
+    "message": "Invalid order id"
+  }
+
+  ```
+
+  ```
+  {
+    "error": true,
+    "message": "Order already completed"
+  }
+
+  ```
+
+  ```
+  {
+    "error": true,
+    "message": "Not authorized to complete this order"
+  }
+  ```
+
+  ```
+  {
+    "error": true,
+    "message": "Server completing order"
+  }
+  ```
+
+### Get All My Recruiter Order History
+
+- URL
+
+- `/recruiter/order`
+
+- Method
+
+- `GET`
+
+- Headers
+
+- `Authorization` : `<accessToken>`
 
 - Response _(success)_
 
@@ -554,7 +615,6 @@
       ]
     }
   }
-
   ```
 
 - Response _(fail)_
