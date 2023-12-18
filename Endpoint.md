@@ -309,6 +309,7 @@
   - `name` as `string`
   - `description` as `string`
   - `price` as `Number`
+  - `address` as `string`
   - `categoryId` as `ObjectId` of _Categories model_
 
     <br/>
@@ -318,6 +319,7 @@
     "name": "Sample Job Name",
     "description": "Help Moving some stuff",
     "price": 65000,
+    "address": "Jl. Kembang Melati X",
     "categoryId": "657077a14efa02ea2514ae39"
   }
   ```
@@ -332,6 +334,7 @@
          "name": "Sample Job Name",
          "description": "Help Moving some stuff",
          "categoryId": "657077a14efa02ea2514ae39",
+         "address": "Jl. Kembang Melati X"
          "price": 65000,
          "createdBy": "recruiter_id",
          "isActive": true,
