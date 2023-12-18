@@ -22,7 +22,7 @@ const GetAllActiveJobs = async (req, res) => {
 
 const CreateJob = async (req, res) => {
     try {
-        const { name, description, categoryId, price } = req.body;
+        const { name, description, categoryId, address, price } = req.body;
   
         const categoryObject = await Categories.findById(categoryId)
         const findRecruiterId = await Recruiters.findOne({}, { userId: req.user.userId })
@@ -37,6 +37,7 @@ const CreateJob = async (req, res) => {
             name,
             categoryId: categoryObject._id,
             price,
+            address,
             description,
             createdBy: findRecruiterId._id
         });

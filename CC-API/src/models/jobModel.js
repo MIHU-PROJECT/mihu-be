@@ -15,6 +15,10 @@ const jobSchema = new mongoose.Schema({
         ref: 'Categories',
         required: true
     },
+    address: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
         required: true
