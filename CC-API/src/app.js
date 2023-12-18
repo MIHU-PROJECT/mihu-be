@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+    await connectDatabase();
     console.log(`Server Listening to port ${PORT}`)
-    connectDatabase();
 })
