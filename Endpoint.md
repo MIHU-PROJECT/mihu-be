@@ -20,7 +20,9 @@
   - `username` as `string`
   - `email` as `string` must be unique.
   - `password` as `string`
+  
     <br/>
+
   ```
   {
     "username": "worker",
@@ -28,6 +30,7 @@
     "email": "worker@example.com"
   }
   ```
+
 - Response _(success)_
 
   ```
@@ -58,13 +61,16 @@
 - Request Body
   - `email` as `string` must be unique.
   - `password` as `string`
+
     <br/>
+
   ```
   {
     "email": "worker@example.com"
     "password": "worker123",
   }
   ```
+
 - Response _(success)_
 
   ```
@@ -77,7 +83,7 @@
         "email": "worker@example.com",
         "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTdjMWIxNjQzZDFkYmJkMjFlOThkYTIiLCJyb2xlIjoid29ya2VyIiwiaWF0IjoxNzAyNjM3ODIwLCJleHAiOjE3MzQxOTU0MjB9.XTgzBqF5KBY0noezyvAsugS1q1wjCj3EvWL5jilXLy4",
          "role": "worker"
-  }
+      }
   }
   ```
 
@@ -105,7 +111,9 @@
   - `username` as `string`
   - `email` as `string` must be unique.
   - `password` as `string`
+  
     <br/>
+
   ```
   {
     "username": "recruiter",
@@ -113,6 +121,7 @@
     "email": "recruiter@example.com"
   }
   ```
+  
 - Response _(success)_
 
   ```
@@ -143,7 +152,9 @@
 - Request Body
   - `email` as `string` must be unique.
   - `password` as `string`
+
     <br/>
+    
   ```
   {
      "email": "recruiter@example.com",
@@ -299,6 +310,7 @@
   - `description` as `string`
   - `price` as `Number`
   - `categoryId` as `ObjectId` of _Categories model_
+
     <br/>
 
   ```
@@ -342,8 +354,6 @@
 > ### Worker
 
 ### Get All Active Jobs for Worker
-
-router.get('/worker/order', authenticateToken, GetMyWorkerOrderHistory)
 
 - URL
 
@@ -390,7 +400,7 @@ router.get('/worker/order', authenticateToken, GetMyWorkerOrderHistory)
   }
   ```
 
-### Create Order by Worker
+### Take Job by Worker
 
 - URL
 
@@ -431,9 +441,11 @@ router.get('/worker/order', authenticateToken, GetMyWorkerOrderHistory)
   }
   ```
 
-### Get My Worker Order History For Worker
+## Order Section
 
-router.get('/worker/order', authenticateToken, GetMyWorkerOrderHistory)
+> ### Worker
+
+### Get All My Worker Order History
 
 - URL
 
@@ -479,3 +491,9 @@ router.get('/worker/order', authenticateToken, GetMyWorkerOrderHistory)
     "message": "Server error getting order history"
   }
   ```
+
+> ### Recruiter
+
+### Get All My Recruiter Order History
+
+- `Comingsoon`
