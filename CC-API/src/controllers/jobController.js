@@ -25,8 +25,8 @@ const CreateJob = async (req, res) => {
         const { name, description, categoryId, price } = req.body;
   
         const categoryObject = await Categories.findById(categoryId)
-        const findRecruiterId = await Recruiters.findOne({}, { userId: req.user.userId })
-  
+        const findRecruiterId = await Recruiters.findOne({ userId: req.user.userId })
+
         if(!categoryObject) {
             return res.status(400).json({
                 message: 'Invalid category id',
