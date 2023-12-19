@@ -72,7 +72,7 @@ npm run dev
 
 ## API Endpoint List
 
-# User
+## User
 
 [POST] http://localhost:3000/register #Register User
 [POST] http://localhost:3000/login #Login User
@@ -80,10 +80,9 @@ npm run dev
 [PUT] http://localhost:3000/users/6573496fdc3e65e0bc9dbbdd #Update User By Id
 [GET] http://localhost:3000/users #Find All User By Role
 
-# Jobs
+## Jobs
 
 [POST] http://localhost:3000/recruiter/job #Create Job By Recruiter
-
 [GET] http://localhost:3000/worker/job #Get All Active Jobs For Worker
 [POST] {{URI}}/worker/job/{{JOB_ID}} #Take Job By Worker
 [GET] http://localhost:3000/jobs/65735452486820bac60b61ce #Get Job By Id
@@ -92,16 +91,14 @@ npm run dev
 [GET] http://localhost:3000/jobs/search/category/Ironing #Search Job By Category
 [GET] http://localhost:3000/jobs/search/name/Help #Search Job By Name
 
-# Order
+## Order
 
 [PATCH] {{URI}}/recruiter/order/{{ORDER_ID}} #Update Order Completed by Recruiter
 [GET] {{URI}}/recruiter/order #Get All My Order History
-
 [GET] http://localhost:3000/worker/order #Get All My Orders History
 
-# Category
+## Category
 
 [GET] {{URI}}/categories #Get All Category
-
 [POST] https://asia-southeast2-latihan-osama.cloudfunctions.net/mihu_inference #MIHU Model Inference
 [POST] {{URI}}/predict #Predict category
