@@ -69,3 +69,39 @@ To start the Express.js server and run the database setup:
 npm run start
 npm run dev
 ```
+
+## API Endpoint List
+
+# User
+
+[POST] http://localhost:3000/register #Register User
+[POST] http://localhost:3000/login #Login User
+[GET] http://localhost:3000/users/657938b3b0bb8da7221cb298 #Get User By Id
+[PUT] http://localhost:3000/users/6573496fdc3e65e0bc9dbbdd #Update User By Id
+[GET] http://localhost:3000/users #Find All User By Role
+
+# Jobs
+
+[POST] http://localhost:3000/recruiter/job #Create Job By Recruiter
+
+[GET] http://localhost:3000/worker/job #Get All Active Jobs For Worker
+[POST] {{URI}}/worker/job/{{JOB_ID}} #Take Job By Worker
+[GET] http://localhost:3000/jobs/65735452486820bac60b61ce #Get Job By Id
+[PUT] http://localhost:3000/jobs/65746c0e3b0746adeb45c9b2 #Update Job By Id
+[DELETE] http://localhost:3000/jobs/65749622a2d63fc0bd40fc7a #Delete Job By Id
+[GET] http://localhost:3000/jobs/search/category/Ironing #Search Job By Category
+[GET] http://localhost:3000/jobs/search/name/Help #Search Job By Name
+
+# Order
+
+[PATCH] {{URI}}/recruiter/order/{{ORDER_ID}} #Update Order Completed by Recruiter
+[GET] {{URI}}/recruiter/order #Get All My Order History
+
+[GET] http://localhost:3000/worker/order #Get All My Orders History
+
+# Category
+
+[GET] {{URI}}/categories #Get All Category
+
+[POST] https://asia-southeast2-latihan-osama.cloudfunctions.net/mihu_inference #MIHU Model Inference
+[POST] {{URI}}/predict #Predict category
