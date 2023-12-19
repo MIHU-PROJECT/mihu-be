@@ -72,7 +72,7 @@ UpdateOrderCompleted = async (req, res) => {
     }
 
     const job = await Jobs.findById(order.jobId);
-    const recruiter = await Recruiters.findOne({}, { userId: req.user.userId })
+    const recruiter = await Recruiters.findOne({ userId: req.user.userId })
 
     if (!job.createdBy.equals(recruiter._id)) {
       return res.status(401).json({
