@@ -57,16 +57,4 @@ router.get('/worker/order', authenticateToken, GetMyWorkerOrderHistory)
 router.patch('/recruiter/order/:_id', authenticateToken, authenticateRecruiter, UpdateOrderCompleted)
 router.get('/recruiter/order', authenticateToken, GetMyRecruiterOrderHistory)
 
-// Users route management
-// router.get('/users', getAllUsers)
-// router.get('/users/worker/:_id', getAllUsers)
-// router.get('/users/recruiter/:_id', getAllUsers)
-// router.put('/users/:_id', updateUserById)
-
-// router.get('/job/:_id', authenticateToken, GetJobById)
-// router.put('/jobs/:_id', authenticateToken, updateJobById)
-// router.delete('/jobs/:_id', authenticateToken, deleteJobById)
-// router.get('/jobs/search/name/:name', searchJobByName);
-// router.get('/jobs/search/category/:category', searchJobByCategory);
-
 module.exports = router;
