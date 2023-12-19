@@ -291,6 +291,62 @@
   }
   ```
 
+### Predict Category
+
+- URL
+
+  - `/predict`
+
+- Method
+
+  - `POST`
+
+- Headers
+
+  - `Authorization` : `<accessToken>`
+
+- Request body
+  ```
+  {
+    "sentences": "Tolong bersihkan baju saya yang terkena bercak darah"
+  }
+  ```
+
+- Response _(success)_
+  ```
+  {
+    "error": false,
+    "message": "Success",
+    "data": {
+        "predictions": [
+            {
+                "_id": "6580830f7725ecb96a43dfa0",
+                "name": "Laundry and Ironing",
+                "__v": 0,
+                "categoriesImage": "https://storage.googleapis.com/categories-image/images/Laundry%20%26%20Ironing.png",
+                "description": "Services related to laundry and ironing clothes."
+            },
+            {
+                "_id": "6580830f7725ecb96a43dfbb",
+                "name": "Help Moving",
+                "__v": 0,
+                "categoriesImage": "https://storage.googleapis.com/categories-image/images/Help%20Moving.png",
+                "description": "Services related to moving assistance."
+            },
+            { ... And the others Categories Predictions }
+        ]
+    }
+  }
+  ```
+
+- Response _(fail)_
+  ```
+  {
+    "error": true,
+    "message": "Error invoking Cloud Function"
+  }
+  ```
+
 ## Job section
 
 > ### Recruiter
@@ -499,7 +555,7 @@
 
 > ### Recruiter
 
-### UpdateOrderCompleted
+### Update Order to Completed
 
 - URL
 
@@ -507,7 +563,7 @@
 
 - Method
 
-  - `PUT`
+  - `PATCH`
 
 - Headers
 
@@ -520,12 +576,17 @@
     "error": false,
     "message": "Success completing order",
     "data": {
-      "order": {
-        /* Completed Order Object */
+        "order": {
+            "_id": "order_id",
+            "jobId": "example_job_ObjectId",
+            "workerId": "example_worker_ObjectId",
+            "isCompleted": true,
+            "createdAt": "timestamp",
+            "updatedAt": "timestamp",
+            "__v": 0
+        }
       }
-    }
   }
-
   ```
 
 - Response _(fail)_
@@ -533,24 +594,9 @@
   ```
   {
     "error": true,
-    "message": "Invalid order id"
-  }
-
-  ```
-
-  ```
-  {
-    "error": true,
     "message": "Order already completed"
   }
 
-  ```
-
-  ```
-  {
-    "error": true,
-    "message": "Not authorized to complete this order"
-  }
   ```
 
   ```
@@ -564,15 +610,15 @@
 
 - URL
 
-- `/recruiter/order`
+  - `/recruiter/order`
 
 - Method
 
-- `GET`
+  - `GET`
 
 - Headers
 
-- `Authorization` : `<accessToken>`
+  - `Authorization` : `<accessToken>`
 
 - Response _(success)_
 
@@ -586,30 +632,30 @@
           "name": "Job Name",
           "category": "Job Category",
           "description": "Job Description",
-          "price": 100.00,
+          "price": 100000,
           "status": "completed",
           "worker": "Worker Username",
-          "createdAt": "2023-01-01T00:00:00.000Z",
-          "updatedAt": "2023-01-02T00:00:00.000Z"
+          "createdAt": "timestamp",
+          "updatedAt": "timestamp"
         },
         {
-          "name": "Another Job",
+          "name": "Ongoing Job",
           "category": "Another Category",
           "description": "Another Description",
-          "price": 150.00,
+          "price": 150000,
           "status": "ongoing",
           "worker": "Another Worker",
-          "createdAt": "2023-02-01T00:00:00.000Z",
-          "updatedAt": "2023-02-02T00:00:00.000Z"
+          "createdAt": "timestamp",
+          "updatedAt": "timestamp"
         },
         {
           "name": "Pending Job",
           "category": "Pending Category",
           "description": "Pending Description",
-          "price": 200.00,
+          "price": 20000,
           "status": "waiting",
-          "createdAt": "2023-03-01T00:00:00.000Z",
-          "updatedAt": "2023-03-02T00:00:00.000Z"
+          "createdAt": "timestamp",
+          "updatedAt": "timestamp"
         },
         ...
       ]
@@ -623,8 +669,6 @@
   {
     "error": true,
     "message": "Internal Server Error",
-    "data": null
+    "data": { null }
   }
   ```
-
-- `Comingsoon`

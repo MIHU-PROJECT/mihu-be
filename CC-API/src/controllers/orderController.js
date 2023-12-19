@@ -96,7 +96,7 @@ UpdateOrderCompleted = async (req, res) => {
       console.error(error);
       return res.status(500).json({
           error: true,
-          message: 'Server completing order',
+          message: 'Server error completing order',
       })
   }
 }
