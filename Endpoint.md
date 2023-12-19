@@ -610,15 +610,15 @@
 
 - URL
 
-- `/recruiter/order`
+  - `/recruiter/order`
 
 - Method
 
-- `GET`
+  - `GET`
 
 - Headers
 
-- `Authorization` : `<accessToken>`
+  - `Authorization` : `<accessToken>`
 
 - Response _(success)_
 
@@ -635,18 +635,18 @@
           "price": 100000,
           "status": "completed",
           "worker": "Worker Username",
-          "createdAt": "2023-01-01T00:00:00.000Z",
-          "updatedAt": "2023-01-02T00:00:00.000Z"
+          "createdAt": "timestamp",
+          "updatedAt": "timestamp"
         },
         {
-          "name": "Another Job",
+          "name": "Ongoing Job",
           "category": "Another Category",
           "description": "Another Description",
           "price": 150000,
           "status": "ongoing",
           "worker": "Another Worker",
-          "createdAt": "2023-02-01T00:00:00.000Z",
-          "updatedAt": "2023-02-02T00:00:00.000Z"
+          "createdAt": "timestamp",
+          "updatedAt": "timestamp"
         },
         {
           "name": "Pending Job",
@@ -654,8 +654,8 @@
           "description": "Pending Description",
           "price": 20000,
           "status": "waiting",
-          "createdAt": "2023-03-01T00:00:00.000Z",
-          "updatedAt": "2023-03-02T00:00:00.000Z"
+          "createdAt": "timestamp",
+          "updatedAt": "timestamp"
         },
         ...
       ]
@@ -669,6 +669,6 @@
   {
     "error": true,
     "message": "Internal Server Error",
-    "data": null
+    "data": { null }
   }
   ```
