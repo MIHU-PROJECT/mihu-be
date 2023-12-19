@@ -10,7 +10,7 @@ const CreateOrder = async (req, res) => {
     const jobId = req.params._id;
 
     const job = await Jobs.findById(jobId);
-    const findWorkerId = await Workers.findOne({}, { userId: req.user.userId })
+    const findWorkerId = await Workers.findOne({ userId: req.user.userId })
 
     if (!job) {
       return res.status(400).json({
