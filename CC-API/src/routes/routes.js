@@ -16,6 +16,8 @@ const {
 
 const { GetAllCategory } = require('../controllers/categoryController')
 
+const { PredictCategory } = require('../controllers/predictController')
+
 const { 
     GetAllActiveJobs,
     CreateJob,
@@ -41,6 +43,9 @@ router.get('/check-auth', authenticateToken, CheckAuth)
 
 // All Available Category
 router.get('/categories', GetAllCategory)
+
+// Predict sentences category
+router.post('/predict', authenticateToken, PredictCategory)
 
 // Jobs route management
 router.post('/recruiter/job', authenticateToken, authenticateRecruiter, CreateJob)
