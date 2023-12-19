@@ -72,7 +72,8 @@ npm run dev
 
 ## API Endpoint List
 
-## User
+```bash
+# User
 
 [POST] http://localhost:3000/register #Register User
 [POST] http://localhost:3000/login #Login User
@@ -80,25 +81,26 @@ npm run dev
 [PUT] http://localhost:3000/users/6573496fdc3e65e0bc9dbbdd #Update User By Id
 [GET] http://localhost:3000/users #Find All User By Role
 
-## Jobs
+# Jobs
 
-[POST] http://localhost:3000/recruiter/job #Create Job By Recruiter
-[GET] http://localhost:3000/worker/job #Get All Active Jobs For Worker
-[POST] {{URI}}/worker/job/{{JOB_ID}} #Take Job By Worker
-[GET] http://localhost:3000/jobs/65735452486820bac60b61ce #Get Job By Id
-[PUT] http://localhost:3000/jobs/65746c0e3b0746adeb45c9b2 #Update Job By Id
-[DELETE] http://localhost:3000/jobs/65749622a2d63fc0bd40fc7a #Delete Job By Id
-[GET] http://localhost:3000/jobs/search/category/Ironing #Search Job By Category
-[GET] http://localhost:3000/jobs/search/name/Help #Search Job By Name
+[POST] http://localhost:3000/recruiter/job #Create Job By Recruiter (Recruiter)
+[GET] http://localhost:3000/worker/job #Get All Active Jobs For Worker (Worker)
+[POST] http://localhost:3000/worker/job/657c1b1643d1dbbd21e98da2 #Take Job By Worker (Worker)
+[GET] http://localhost:3000/jobs/65735452486820bac60b61ce #Get Job By Id (Worker)
+[PUT] http://localhost:3000/jobs/65746c0e3b0746adeb45c9b2 #Update Job By Id (Worker)
+[DELETE] http://localhost:3000/jobs/65749622a2d63fc0bd40fc7a #Delete Job By Id (Worker)
+[GET] http://localhost:3000/jobs/search/category/Ironing #Search Job By Category (Worker)
+[GET] http://localhost:3000/jobs/search/name/Help #Search Job By Name (Worker)
 
-## Order
+# Order
 
-[PATCH] {{URI}}/recruiter/order/{{ORDER_ID}} #Update Order Completed by Recruiter
-[GET] {{URI}}/recruiter/order #Get All My Order History
-[GET] http://localhost:3000/worker/order #Get All My Orders History
+[PATCH] http://localhost:3000/recruiter/order/657c1983a2181dd705191ce0 #Update Order Completed by Recruiter (Recruiter)
+[GET] http://localhost:3000/recruiter/order #Get All My Order History (Recruiter)
+[GET] http://localhost:3000/worker/order #Get All My Orders History (Worker)
 
-## Category
+# Category
 
-[GET] {{URI}}/categories #Get All Category
+[GET] http://localhost:3000/categories #Get All Category
 [POST] https://asia-southeast2-latihan-osama.cloudfunctions.net/mihu_inference #MIHU Model Inference
-[POST] {{URI}}/predict #Predict category
+[POST] http://localhost:3000/predict #Predict category
+```
