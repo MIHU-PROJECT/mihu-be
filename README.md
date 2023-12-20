@@ -12,11 +12,11 @@ _See Endpoint documentation here :_
 
 > https://github.com/fadhilaf/mihu-be/blob/main/Endpoint.md
 
-_GCP Backend Architecture_
+**_GCP Backend Architecture_**
 
 > _On Progress_
 
-_Database relational Design_
+**_Database relational Design_**
 
 ![image](https://github.com/MIHU-PROJECT/mihu-be/blob/main/CC-API/src/assets/MIHU_Schema_Design.svg)
 
@@ -40,22 +40,22 @@ _Database relational Design_
    npm install
    ```
 
-## SETTING UP .ENV File
+## Setting Up Environment File
 
 before starting running the application, set env file based on your needs:
 
 ```bash
-ACCESS_TOKEN_SECRET=a960fbacd5457ca62feacdbf2c79bc6d60a4c32b02fa84980e31c3d81be58ae85c5455769d5a9927d355c6484c7e4b709c585009efee57fa34a53d8763cfe06d
-REFRESH_TOKEN_SECRET=1ace6e5e443df749d5411d8c102025f166d6ac3e98f9fd22eeb0ceea7dfbeb571c6223870ad04ca3bef8e8a53d9221e0868f0110555b30487148d6cf2285203d
+ACCESS_TOKEN_SECRET = YOUR_ACCESS_TOKEN_SECRET_KEY
+REFRESH_TOKEN_SECRET = YOUR_REFRESH_TOKEN_SECRET_KEY
 
-MONGODB_URL = mongodb://127.0.0.1:27017/Mihu-DB
+MONGODB_URL = YOUR_LOCAL_CONNECTION_STRING
 
-MONGO_ATLAS_URL = mongodb+srv://msidiqh991:hardiansyah991@mihu-try.smuoa3c.mongodb.net/MIHU-CloudDB
+MONGO_ATLAS_URL = YOUR_CLOUD_BASE_DATABASE_CONNECTION_STRING
 
-PORT = 3000
+PORT = LOCAL_PORT
 
-PROJECT_ID = solid-idiom-402715
-BUCKET_NAME = categories-image/images
+PROJECT_ID = YOUR_GCP_PROJECT_ID
+BUCKET_NAME = YOUR_BUCKET_NAME_GCS
 ```
 
 You Must Create a Database First before going to next step.
