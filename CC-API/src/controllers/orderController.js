@@ -104,7 +104,7 @@ UpdateOrderCompleted = async (req, res) => {
 const GetMyRecruiterOrderHistory = async (req, res) => {
   //{name: string, category: string, description: string,
   //price: number, worker: string, status: [waiting, ongoing, completed]
-  //orderId: string (if status ongoing or completed)
+  //orderId: string 
   //createdAt (always use job): Date, updatedAt (use order if have): Date}[]
   recruiterOrderHistory = []
 
@@ -145,6 +145,8 @@ const GetMyRecruiterOrderHistory = async (req, res) => {
         description: jobs[i].description,
         price: jobs[i].price,
         status: 'waiting',
+        orderId: '',
+        worker: '',
         createdAt: jobs[i].createdAt,
         updatedAt: jobs[i].updatedAt
       })
@@ -186,6 +188,7 @@ const GetMyWorkerOrderHistory = async (req, res) => {
       description: job.description,
       price: job.price,
       status: orderStatus,
+      orderId: orders[i]._id,
       recruiter: user.username,
       createdAt: orders[i].createdAt,
       updatedAt: orders[i].updatedAt
