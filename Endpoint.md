@@ -291,7 +291,59 @@
   }
   ```
 
-### Predict Category
+### Predict Category GET
+
+- URL
+
+  - `/predict?sentences={sentences}`
+
+- Method
+
+  - `GET`
+
+- Headers
+  None
+
+- Request body
+  None
+
+- Response _(success)_
+  for `/predict?sentences=Tolong%20pindahkan%20lemari%20yang%20berat`
+  ```
+  {
+    "error": false,
+    "message": "Success",
+    "data": {
+        "predictions": [
+            {
+                "_id": "6580830f7725ecb96a43dfbb",
+                "name": "Help Moving",
+                "__v": 0,
+                "categoriesImage": "https://storage.googleapis.com/categories-image/images/Help%20Moving.png",
+                "description": "Services related to moving assistance."
+            },
+            {
+                "_id": "6580830f7725ecb96a43df13",
+                "name": "Cleaning",
+                "__v": 0,
+                "categoriesImage": "https://storage.googleapis.com/categories-image/images/Cleaning.png",
+                "description": "Services related to cleaning tasks."
+            },
+            { ... And the others Categories Predictions }
+        ]
+    }
+  }
+  ```
+
+- Response _(fail)_
+  ```
+  {
+    "error": true,
+    "message": "Error invoking Cloud Function"
+  }
+  ```
+  
+### Predict Category POST
 
 - URL
 
