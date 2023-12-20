@@ -588,6 +588,7 @@
           "description": "Job Description",
           "price": 100,
           "status": "completed",
+          "orderId": "0298fr8a239",
           "recruiter": "Recruiter Username",
           "createdAt": "timestamp",
           "updatedAt": "timestamp"
@@ -710,6 +711,8 @@
           "description": "Pending Description",
           "price": 20000,
           "status": "waiting",
+          "orderId": "",
+          "worker": "",
           "createdAt": "timestamp",
           "updatedAt": "timestamp"
         },
