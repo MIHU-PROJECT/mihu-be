@@ -12,11 +12,11 @@ _See Endpoint documentation here :_
 
 > https://github.com/fadhilaf/mihu-be/blob/main/Endpoint.md
 
-**_GCP Backend Architecture_**
+**GCP Infrastructure Design**
 
 > _On Progress_
 
-**_Database relational Design_**
+**Database Relational Design**
 
 ![image](https://github.com/MIHU-PROJECT/mihu-be/blob/main/CC-API/src/assets/MIHU_Schema_Design.svg)
 

@@ -517,7 +517,7 @@
 
 - URL
 
-  - `/worker/job/:_id`
+  - `/worker/job/:_id` _--> Get from job Id_
 
 - Method
 
@@ -534,15 +534,17 @@
     "error": false,
     "message": "Success taking job",
     "data": {
-      "order": {
-        "_id": "order_id",
-        "jobId": "job_id",
-        "workerId": "worker_id",
-        "createdAt": "timestamp",
-        "updatedAt": "timestamp"
-      }
-    }
-  }
+        "order": {
+            "jobId": "658089528f9a36ad7912de12",
+            "workerId": "6581a9ff19336f25d593ace6",
+            "isCompleted": false,
+            "_id": "65826961b8ca57a3723214c2",
+            "createdAt": "timestamp",
+            "updatedAt": "timestamp",
+            "__v": 0
+        }
+     }
+  } 
   ```
 
 - Response _(fail)_
