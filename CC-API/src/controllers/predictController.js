@@ -3,8 +3,21 @@ const { LIST_CATEGORIES, Categories } = require('../models/categoryModel');
 
 dotenv.config();
 
-PredictCategory = async (req, res) => {
+PredictCategoryGet = async (req, res) => {
+    //get query parameter sentences
+    const { sentences } = req.query;
+
+    await PredictCategory(req, res, sentences);
+}
+
+PredictCategoryPost = async (req, res) => {
+
     const { sentences } = req.body;
+
+    await PredictCategory(req, res, sentences);
+}
+
+PredictCategory = async (req, res, sentences) => {
 
     if (!sentences) {
         return res.status(400).json({
@@ -42,7 +55,6 @@ PredictCategory = async (req, res) => {
         // Handle the response
         if (response.ok) {
             const result = await response.json();
-            console.log('Cloud Function response:', result);
 
             //Bentuk result float[]
             categoryPredictions = await processCategoryPredictions(result)
@@ -105,5 +117,6 @@ processCategoryPredictions = async (predictions) => {
 }
 
 module.exports = {
-    PredictCategory,
+    PredictCategoryPost,
+    PredictCategoryGet,
 }
