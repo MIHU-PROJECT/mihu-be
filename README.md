@@ -14,7 +14,7 @@ _See Endpoint documentation here :_
 
 **GCP Infrastructure Design**
 
-> _On Progress_
+![image](https://github.com/MIHU-PROJECT/mihu-be/blob/main/CC-API/src/assets/MIHU_GCP_Architecture.svg)
 
 **Database Relational Design**
 
